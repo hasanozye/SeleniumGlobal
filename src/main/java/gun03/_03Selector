@@ -1,0 +1,26 @@
+
+
+                        By.cssSelector                                    By.xpath
+                        By.cssSelector("div");                            By.xpath("//div");
+                        ileri doğru hareketlidir                          ileri ve geri hareket vardir
+                        text kullanilmaz                                  text kullanilir
+                        relative olarak hizli                             daha yavas
+
+
+tagname div olan        div                                               //div -> relative path
+                                                                          /div -> absolute path
+
+//div   : sayfa içinde herangi bir yerdeki div
+/div    : sayfa başındaki div
+
+By.id("logo")   -> id'si logo olan div
+cssSelector :    div[id='logo']
+xpath       :    //div[@id='logo'],
+xpath       :    * tüm elementler
+
+ul'un baglisi div'ler
+//ul/div           ul>div
+
+ul'un altindaki tüm div'ler
+//ul//div       ul div
+
