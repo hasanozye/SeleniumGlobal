@@ -1,0 +1,25 @@
+
+1.  Yeni bir maven Projesi
+2.  dependency
+    selenium
+    webdrivermanager
+    testNG
+3.  test/java/mypackage  -> olusturun
+4.  test/mypackage  altina Tests.class olusturun
+5.  @Test ile bir test methodu olusturun
+6.  bu method icinde
+        WebDriver tanimlayin.
+7.  https://www.saucedemo.com/ login olun
+8.  listelenen ürünlerin isimleri consola yazdirin
+
+
+//div[@class='inventory_item_price'
+        and ./ancestor::div[@class='inventory_item' and contains(., 'Bolt')]
+     ]
+
+//div[@class='inventory_item' and contains(.,'Bolt')]//div[@class='inventory_item_price']
+
+
+xpath   css
+//      " "  altinda herhangi bir yerde, ilk ve daha sonraki baglilari
+/       >    hemen altinda, ilk baglisi
