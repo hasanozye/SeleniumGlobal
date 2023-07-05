@@ -1,6 +1,7 @@
 package gun07;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -79,13 +80,62 @@ public class DropDown {
 
         Assert.assertEquals(babyAssertElement.getText(),"Baby");
 
+        driver.quit();
+
+    }
+
+    @Test
+    public void toolsQA(){
+
+        driver = Utils.getChromeDriver();
+        driver.get("https://demoqa.com/");
+        driver.manage().window().maximize();
 
 
+        JavascriptExecutor js = (JavascriptExecutor) driver;
 
 
+        By alertPage = By.xpath("(//div[@class='avatar mx-auto white'])[3]");
+        WebElement alertPageElement = driver.findElement(alertPage);
+        js.executeScript("window.scrollBy(0,500)");
+        alertPageElement.click();
 
+
+        Utils.bekle(2000);
+        js.executeScript("window.scrollBy(0,500)");
+        By modalDialogs = By.xpath("//*[text()='Modal Dialogs']");
+        WebElement modalDialogsElement = driver.findElement(modalDialogs);
+        modalDialogsElement.click();
+
+        By smallModal = By.cssSelector("#showSmallModal");
+        WebElement smallModalElement = driver.findElement(smallModal);
+        smallModalElement.click();
+        Utils.bekle(2000);
+
+        By textSmallModal = By.xpath("//*[text()='This is a small modal. It has very less content']");
+        WebElement textSmallModalElement = driver.findElement(textSmallModal);
+        String textStringModalElement = textSmallModalElement.getText();
+        Assert.assertEquals(textStringModalElement,"This is a small modal. It has very less content");
+
+
+        By closeBtn = By.cssSelector("#closeSmallModal");
+        WebElement closeBtnElement = driver.findElement(closeBtn);
+        closeBtnElement.click();
+
+        Utils.bekle(2000);
+        try{
+            Assert.assertFalse(closeBtnElement.isDisplayed(),"it is displayed");
+        }catch(Exception e){
+            System.out.println("The window is closed.");
+
+        }
 
         driver.quit();
+
+
+
+
+
 
     }
 
