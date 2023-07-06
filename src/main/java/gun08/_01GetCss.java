@@ -7,21 +7,18 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.Color;
-import org.openqa.selenium.support.Colors;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.Utils;
 
-import java.awt.*;
-import java.util.HashMap;
-
-public class NewTask {
+public class _01GetCss {
 
     WebDriver driver;
 
     {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
     }
 
     @Test
@@ -29,7 +26,6 @@ public class NewTask {
 
 //        get into the site
         driver.get("http://www.uitestingplayground.com/");
-        driver.manage().window().maximize();
 
 //        js to go a little bit down
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -68,17 +64,23 @@ public class NewTask {
 
     }
 
-    /*public static String getBG(String strTitle,String strKey){
+    @Test
+    public void loadingImg(){
+        driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
 
-        HashMap<String,String> hm = new HashMap<>();
-        if (strTitle.equals("RGB_Verify")){
-            hm.put("Dodger Blue","rgba(0, 123, 255, 1)");
-        }else if (strTitle.equals("HexaDecimalCode_Verify")) {
-            hm.put("Dodger Blue","#007BFF");
-        }
+        By loadingImg = By.xpath("//*[text()='Loading images']");
+        WebElement loadingImgElement = driver.findElement(loadingImg);
+        loadingImgElement.click();
 
-        return hm.get(strKey);
-    }*/
+        Utils.bekle(4000);
+
+        By pusulaImg = By.id("compass");
+        WebElement pusulaImgElement = driver.findElement(pusulaImg);
+        Assert.assertTrue(pusulaImgElement.isDisplayed());
+
+        driver.quit();
+
+    }
 
 
 }
