@@ -54,6 +54,16 @@ public class IFrames {
         tearDown();
     }
 
+    /*
+    Her iFrame ayri birere web sayfasidir
+    iframe ile islem yaparken, driver'in iframe içine atlaması sarttir.
+    Aksi halde driver iFrame içerisindeki elementleri görmez.
+    driver.switchTo().frame( name | id | WebElemenet)
+
+    iFrame dişındaki elementleri görmesi çin de iFrame'den çıkması gerekmetkerdir.
+    driver.switchTo().parentFrame();
+     */
+
     void setupDriver() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
