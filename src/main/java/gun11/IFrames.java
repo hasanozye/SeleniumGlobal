@@ -63,6 +63,52 @@ public class IFrames {
     iFrame dişındaki elementleri görmesi çin de iFrame'den çıkması gerekmetkerdir.
     driver.switchTo().parentFrame();
      */
+    By lFirstFrameId = By.id("frame1");
+    By lFirstFrameText = By.xpath("//*[text()='Parent frame']");
+    By lSecondFrameId = By.tagName("iframe");
+    By lSecondFrameText = By.xpath("//*[text()='Child Iframe']");
+    By lMainText = By.xpath("//*[text()='Sample Nested Iframe page. There are nested iframes in this page. Use browser inspecter or firebug to check out the HTML source. In total you can switch between the parent frame and the nested child frame.']");
+
+    @Test
+    public void testFrame2(){
+        setupDriver();
+        driver.get("https://demoqa.com/nestedframes");
+
+        WebElement eIFrameFirst = driver.findElement(lFirstFrameId);
+        driver.switchTo().frame(eIFrameFirst);
+
+        WebElement eFirstFrameText = driver.findElement(lFirstFrameText);
+
+        String textFirstFrame = eFirstFrameText.getText();
+        System.out.println("textFirstFrame = " + textFirstFrame);
+
+        WebElement eIFrameSecond = driver.findElement(lSecondFrameId);
+        driver.switchTo().frame(eIFrameSecond);
+
+        WebElement eSecondFrameText = driver.findElement(lSecondFrameText);
+
+        String textSecondFrame = eSecondFrameText.getText();
+        System.out.println("textSecondFrame = " + textSecondFrame);
+
+        driver.switchTo().parentFrame();
+        driver.switchTo().parentFrame();
+
+        WebElement eMainText = driver.findElement(lMainText);
+        String mainText = eMainText.getText();
+        System.out.println("mainText = " + mainText);
+
+        tearDown();
+
+
+
+
+
+
+
+
+
+
+    }
 
     void setupDriver() {
         WebDriverManager.chromedriver().setup();
