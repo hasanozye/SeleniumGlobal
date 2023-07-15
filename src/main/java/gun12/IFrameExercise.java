@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.Utils;
 
 import java.time.Duration;
 
@@ -18,7 +19,7 @@ public class IFrameExercise {
     WebDriverWait wait;
     String url = "https://the-internet.herokuapp.com/frames";
 
-    public IFrameExercise(){
+    public IFrameExercise() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -69,8 +70,9 @@ public class IFrameExercise {
     }
 
     By lContentArea = By.cssSelector("p");
+
     @Test
-    public void herokupAppFramesExercise(){
+    public void herokupAppFramesExercise() {
         driver.get(url);
         click(lIFrameLink);
         driver.switchTo().frame("mce_0_ifr");
@@ -87,7 +89,7 @@ public class IFrameExercise {
     By lItalicBtn = By.xpath("//button[@title='Italic']");
 
     @Test
-    public void herokupAppFramesExercise2(){
+    public void herokupAppFramesExercise2() {
         driver.get(url);
         click(lIFrameLink);
         click(lFileBtn);
@@ -97,6 +99,9 @@ public class IFrameExercise {
         driver.switchTo().frame("mce_0_ifr");
         WebElement eContentArea = driver.findElement(lContentArea);
         eContentArea.sendKeys("Hasan");
+        eContentArea.sendKeys(Keys.ENTER, "Özyer");
+        eContentArea.sendKeys(Keys.ARROW_UP, Keys.HOME);
+        Utils.bekle(3000);
 
         driver.quit();
 
