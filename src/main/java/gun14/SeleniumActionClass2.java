@@ -14,19 +14,22 @@ import java.util.Set;
 public class SeleniumActionClass2 extends BaseActionsClass {
 
     String url = "https://www.snapdeal.com/";
+    By lSearchBox = By.id("inputValEnter");
     By lFirstWatch = By.id("652415109752");
     By lImg = By.id("bx-slider-left-image-panel");
+
     @Test
     public void actionPractice() {
         driver.get(url);
-        By lSearchBox = By.id("inputValEnter");
+
         WebElement eSearchBox = driver.findElement(lSearchBox);
 
         Actions actions = new Actions(driver);
         Action action = actions
                 .moveToElement(eSearchBox)
                 .click()
-                .sendKeys("watch", Keys.ENTER)
+                .sendKeys("watch")
+                .sendKeys(Keys.ENTER)
                 .build();
         action.perform();
 
@@ -46,10 +49,17 @@ public class SeleniumActionClass2 extends BaseActionsClass {
 
 
         WebElement eImg = driver.findElement(lImg);
-        hoverActions(eImg, -100, -100);
+        /*hoverActions(eImg, -50, -20);
+        hoverActions(eImg, -20, -10);
         hoverActions(eImg, 0, 0);
-        hoverActions(eImg, 50, 50);
-        hoverActions(eImg, 100, 100);
+        hoverActions(eImg, 20, 20);
+        hoverActions(eImg, 50, 50);*/
+
+        int height = eImg.getSize().height;
+        for (int i = -height / 2; i < height / 2; i+=50) {
+            hoverActions(eImg, 0, i);
+
+        }
 
         driver.quit();
 
