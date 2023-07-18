@@ -44,6 +44,7 @@ public class SeleniumActionClass2 extends BaseActionsClass {
         for (var n : windowHandles) {
             if (!n.equalsIgnoreCase(mainWin)) {
                 driver.switchTo().window(n);
+                break;
             }
         }
 
