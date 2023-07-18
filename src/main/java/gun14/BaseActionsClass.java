@@ -10,9 +10,9 @@ import java.time.Duration;
 
 public class BaseActionsClass {
 
-    WebDriver driver;
-    WebDriverWait wait;
-    JavascriptExecutor js;
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+    protected JavascriptExecutor js;
 
 
 
