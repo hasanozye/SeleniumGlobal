@@ -1,5 +1,6 @@
 package gun14;
 
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ public class BaseActionsClass {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected JavascriptExecutor js;
+    protected Faker faker;
 
 
 
@@ -22,6 +24,7 @@ public class BaseActionsClass {
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
         js = (JavascriptExecutor) driver;
+        faker = new Faker();
     }
 
 
